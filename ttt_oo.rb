@@ -1,6 +1,3 @@
-require 'pry'
-
-
 class TttBoard
 
   attr_accessor :board
