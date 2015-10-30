@@ -9,7 +9,7 @@ class Board
     (1..9).each {|num| self.positions[num] = ' '}
   end
 
-  def display_board
+  def display_positions
     system 'clear'
     puts "  #{positions[1]}  | #{positions[2]}  | #{positions[3]}   "
     puts "----------------"
@@ -102,7 +102,7 @@ class Game
   def move(num)
     player_move(num)
     winner = board.check_winner
-    board.display_board
+    board.display_positions
     unless winner
       computer_move
       winner = board.check_winner
@@ -114,7 +114,7 @@ class Game
   def run
     loop do
       board.clear_board
-      board.display_board
+      board.display_positions
       puts "Let's play!"
       begin
         puts 'Pick a number 1-9 to mark the board'
@@ -122,7 +122,7 @@ class Game
         board.output_available_moves(num)
         winner = move(num)
         board_full = board.available_moves_empty?
-        board.display_board
+        board.display_positions
       end until winner || board_full
 
       winner_output(winner)
